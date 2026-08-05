@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravindra Das — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1e1e2e;
+    --bg-mantle: #181825;
+    --surface: #26263a;
+    --surface-hi: #313244;
+    --border: #3d3d54;
+    --text: #cdd6f4;
+    --text-muted: #9399b2;
+    --blue: #89b4fa;
+    --green: #a6e3a1;
+    --peach: #fab387;
+    --mauve: #cba6f7;
+    --red: #f38ba8;
+    --yellow: #f9e2af;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+  body{ margin:0; background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; }
+  a{ color: var(--blue); }
+  :focus-visible{ outline: 2px solid var(--peach); outline-offset: 3px; border-radius: 4px; }
+  .titlebar{ position: sticky; top:0; z-index:50; background: var(--bg-mantle); border-bottom: 1px solid var(--border); }
+  .titlebar-top{ display:flex; align-items:center; gap:8px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .dot{ width:11px; height:11px; border-radius:50%; }
+  .dot.red{ background:#f38ba8; }
+  .dot.yellow{ background:#f9e2af; }
+  .dot.green{ background:#a6e3a1; }
+  .titlebar-file{ margin-left: 14px; font-family: var(--mono); font-size: 12.5px; color: var(--text-muted); }
+  .tabs{ display:flex; overflow-x:auto; scrollbar-width:none; }
+  .tabs::-webkit-scrollbar{ display:none; }
+  .tab{ font-family: var(--mono); font-size: 13px; padding: 11px 20px; color: var(--text-muted); background: transparent; border: none; border-right: 1px solid var(--border); cursor: pointer; white-space: nowrap; display:flex; align-items:center; gap:8px; transition: color .15s ease, background .15s ease; }
+  .tab .tag{ color: var(--mauve); }
+  .tab:hover{ color: var(--text); background: rgba(255,255,255,0.03); }
+  .tab.active{ color: var(--text); background: var(--surface); box-shadow: inset 0 -2px var(--peach); }
+  section{ scroll-margin-top: 84px; }
+  .wrap{ max-width: 900px; margin: 0 auto; padding: 64px 24px; }
+  .eyebrow{ font-family: var(--mono); font-size: 12.5px; color: var(--text-muted); display:flex; align-items:center; gap:10px; margin-bottom: 18px; }
+  .eyebrow::before{ content: ''; width:16px; height:1px; background: var(--border); }
+  .hero{ padding: 96px 24px 64px; }
+  .code-block{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 28px 30px; font-family: var(--mono); font-size: 15.5px; box-shadow: 0 20px 60px -30px rgba(0,0,0,0.6); }
+  .ln{ color: #4b4b63; user-select:none; display:inline-block; width: 22px; }
+  .code-block .kw{ color: var(--mauve); }
+  .code-block .fn{ color: var(--blue); }
+  .code-block .str{ color: var(--green); }
+  .code-block .prop{ color: var(--peach); }
+  .code-block .com{ color: var(--text-muted); font-style: italic; }
+  .caret{ display:inline-block; width:8px; height:1.1em; background: var(--peach); animation: blink 1s steps(1) infinite; vertical-align: text-bottom; margin-left: 2px; }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .hero h1{ font-family: var(--mono); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(30px, 5vw, 46px); margin: 30px 0 8px; }
+  .hero .role{ color: var(--text-muted); font-size: 17px; margin-bottom: 30px; }
+  .cta-row{ display:flex; gap: 14px; flex-wrap: wrap; }
+  .btn{ font-family: var(--mono); font-size: 13.5px; padding: 12px 20px; border-radius: 8px; text-decoration:none; display:inline-flex; align-items:center; gap:8px; cursor:pointer; border: 1px solid var(--border); transition: transform .15s ease, border-color .15s ease; }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn.primary{ background: var(--peach); color: #1e1e2e; border-color: var(--peach); font-weight:700; }
+  .btn.ghost{ color: var(--text); background: transparent; }
+  .btn.ghost:hover{ border-color: var(--blue); color: var(--blue); }
+  .about-card{ background: var(--surface); border:1px solid var(--border); border-radius: 10px; padding: 30px 32px; font-family: var(--mono); font-size: 14px; color: var(--text-muted); }
+  .about-card .comment{ color: #6c7086; }
+  .about-card p.body-text{ font-family: var(--sans); color: var(--text); font-size: 16px; margin: 14px 0 0; }
+  h2.section-title{ font-family: var(--mono); font-size: 22px; margin: 0 0 26px; color: var(--text); display:flex; align-items:baseline; gap:10px; }
+  h2.section-title .path{ color: var(--text-muted); font-weight:400; font-size:15px; }
+  .skill-group{ margin-bottom: 26px; }
+  .skill-group .label{ font-family: var(--mono); font-size: 12.5px; color: var(--mauve); margin-bottom: 12px; text-transform: lowercase; }
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{ font-family: var(--mono); font-size: 13px; padding: 7px 13px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+  .project-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 20px; }
+  .project-card{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; display:flex; flex-direction:column; gap: 12px; transition: border-color .2s ease, transform .2s ease; }
+  .project-card:hover{ border-color: var(--blue); transform: translateY(-3px); }
+  .project-card .fname{ font-family: var(--mono); color: var(--blue); font-size: 14.5px; font-weight:600; }
+  .project-card .desc{ font-size: 14.5px; color: var(--text-muted); flex-grow:1; }
+  .project-card .stack{ display:flex; flex-wrap:wrap; gap:8px; }
+  .stack span{ font-family: var(--mono); font-size: 11.5px; color: var(--green); background: rgba(166,227,161,0.08); padding: 3px 8px; border-radius: 5px; }
+  .project-card .links{ display:flex; gap:14px; font-family: var(--mono); font-size: 13px; }
+  .commit{ display:flex; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .commit:last-child{ border-bottom:none; }
+  .commit .hash{ font-family: var(--mono); color: var(--peach); font-size:13px; padding-top:2px; white-space:nowrap; }
+  .commit .msg{ font-weight:600; font-size: 15.5px; }
+  .commit .meta{ color: var(--text-muted); font-family: var(--mono); font-size: 12.5px; margin-top:4px; }
+  .terminal{ background: var(--bg-mantle); border:1px solid var(--border); border-radius:10px; padding: 26px 28px; font-family: var(--mono); font-size: 14px; }
+  .terminal .prompt{ color: var(--green); }
+  .terminal .cmd{ color: var(--text); }
+  form.contact-form{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+  .contact-form label{ font-family: var(--mono); font-size:12.5px; color: var(--text-muted); }
+  .contact-form input, .contact-form textarea{ width:100%; background: var(--surface); border:1px solid var(--border); border-radius:6px; padding: 11px 13px; color: var(--text); font-family: var(--sans); font-size:14.5px; margin-top:6px; }
+  .contact-form input:focus, .contact-form textarea:focus{ border-color: var(--blue); outline:none; }
+  .contact-form button{ align-self:flex-start; font-family: var(--mono); background: var(--green); color:#1e1e2e; border:none; padding: 12px 22px; border-radius:8px; font-weight:700; cursor:pointer; font-size:13.5px; }
+  .contact-links{ display:flex; gap:20px; margin-top:22px; font-family: var(--mono); font-size:13.5px; flex-wrap:wrap; }
+  .console{ background: var(--bg-mantle); border-top: 1px solid var(--border); font-family: var(--mono); font-size: 12.5px; color: var(--text-muted); padding: 18px 24px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .console .ok{ color: var(--green); }
+  @media (max-width: 640px){ .wrap{ padding: 48px 18px; } .hero{ padding: 56px 18px 40px; } }
+</style>
+</head>
+<body>
+
+<div class="titlebar">
+  <div class="titlebar-top">
+    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+    <span class="titlebar-file">ravindra-das — portfolio</span>
+  </div>
+  <nav class="tabs" aria-label="Section navigation">
+    <button class="tab active" data-target="hero"><span class="tag">const</span> about.js</button>
+    <button class="tab" data-target="skills">skills.json</button>
+    <button class="tab" data-target="projects">projects/</button>
+    <button class="tab" data-target="resume">resume.log</button>
+    <button class="tab" data-target="contact">contact.sh</button>
+  </nav>
+</div>
+
+<section id="hero" class="hero">
+  <div class="wrap" style="padding:0;">
+    <div class="code-block">
+<span class="ln">1</span><span class="kw">const</span> <span class="fn">ravindra</span> = {<br>
+<span class="ln">2</span>&nbsp;&nbsp;<span class="prop">name</span>: <span class="str">"Ravindra Das"</span>,<br>
+<span class="ln">3</span>&nbsp;&nbsp;<span class="prop">role</span>: <span class="str">"B.Tech AI & ML Student"</span>,<br>
+<span class="ln">4</span>&nbsp;&nbsp;<span class="prop">college</span>: <span class="str">"CGC University"</span>,<br>
+<span class="ln">5</span>&nbsp;&nbsp;<span class="prop">location</span>: <span class="str">"Chandigarh, India"</span>,<br>
+<span class="ln">6</span>&nbsp;&nbsp;<span class="com">// building AI/ML projects, one commit at a time</span><br>
+<span class="ln">7</span>&nbsp;&nbsp;<span class="prop">stack</span>: [<span class="str">"Python"</span>, <span class="str">"scikit-learn"</span>, <span class="str">"..."</span>]<br>
+<span class="ln">8</span>};<span class="caret"></span>
+    </div>
+    <h1>Ravindra Das</h1>
+    <p class="role">2nd-year B.Tech student specializing in Artificial Intelligence & Machine Learning at CGC University, Chandigarh.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn ghost" href="#resume">Resume</a>
+      <a class="btn ghost" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="section-title">about.md <span class="path">~/ravindra/about</span></h2>
+    <div class="about-card">
+      <div class="comment">/* a short intro, in my own words */</div>
+      <p class="body-text">
+        I'm a 2nd-year B.Tech student specializing in Artificial Intelligence & Machine Learning at
+        CGC University, Chandigarh. I enjoy turning ideas into working AI-powered software — from
+        classifiers that filter spam to chatbots that hold real conversations. I like understanding how
+        models work under the hood, and I'm currently focused on strengthening my fundamentals in
+        machine learning, NLP, and full-stack development while building projects I can be proud to show.
+        Always open to internships, collaborations, and interesting problems.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="section-title">skills.json <span class="path">~/ravindra/skills</span></h2>
+
+    <div class="skill-group">
+      <div class="label">languages</div>
+      <div class="chips">
+        <span class="chip">Python</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">SQL</span>
+        <span class="chip">C++</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="label">ai / ml & frameworks</div>
+      <div class="chips">
+        <span class="chip">scikit-learn</span>
+        <span class="chip">Pandas & NumPy</span>
+        <span class="chip">Streamlit</span>
+        <span class="chip">React</span>
+        <span class="chip">Node.js</span>
+        <span class="chip">Flask</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="label">tools & platforms</div>
+      <div class="chips">
+        <span class="chip">Git & GitHub</span>
+        <span class="chip">Jupyter Notebook</span>
+        <span class="chip">VS Code</span>
+        <span class="chip">MySQL</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="label">currently learning</div>
+      <div class="chips">
+        <span class="chip">Deep Learning</span>
+        <span class="chip">NLP</span>
+        <span class="chip">Cloud (AWS)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="section-title">projects/ <span class="path">~/ravindra/projects</span></h2>
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="fname">📁 Spam_Email_Classifier</div>
+        <div class="desc">A machine learning model that detects and filters spam emails using text classification techniques.</div>
+        <div class="stack"><span>Python</span><span>scikit-learn</span><span>NLP</span></div>
+        <div class="links"><a href="https://github.com/ravindra-das-aiml/Spam_Email_Classifier" target="_blank" rel="noopener">Source</a></div>
+      </div>
+
+      <div class="project-card">
+        <div class="fname">📁 customer-service-chatbot</div>
+        <div class="desc">An AI-powered customer service chatbot that understands and responds to user queries automatically.</div>
+        <div class="stack"><span>Python</span><span>scikit-learn</span><span>Streamlit</span></div>
+        <div class="links"><a href="https://github.com/ravindra-das-aiml/customer-service-chatbot" target="_blank" rel="noopener">Source</a></div>
+      </div>
+
+      <div class="project-card">
+        <div class="fname">📁 Emotion_Detection_Clean</div>
+        <div class="desc">A model that detects human emotions from input data, built and refined as part of ongoing ML practice.</div>
+        <div class="stack"><span>Python</span><span>ML</span></div>
+        <div class="links"><a href="https://github.com/ravindra-das-aiml/Emotion_Detection_Clean" target="_blank" rel="noopener">Source</a></div>
+      </div>
+
+      <div class="project-card">
+        <div class="fname">📁 FakeNewsProject</div>
+        <div class="desc">A tool that analyzes news content to help identify potentially fake or misleading articles.</div>
+        <div class="stack"><span>HTML</span><span>ML</span></div>
+        <div class="links"><a href="https://github.com/ravindra-das-aiml/FakeNewsProject" target="_blank" rel="noopener">Source</a></div>
+      </div>
+
+      <div class="project-card">
+        <div class="fname">📁 emotisense</div>
+        <div class="desc">A JavaScript-based application for sensing and reflecting emotional states through an interactive interface.</div>
+        <div class="stack"><span>JavaScript</span></div>
+        <div class="links"><a href="https://github.com/ravindra-das-aiml/emotisense" target="_blank" rel="noopener">Source</a></div>
+      </div>
+
+      <div class="project-card">
+        <div class="fname">📁 realtime-analytics</div>
+        <div class="desc">A real-time analytics tool for tracking and visualizing live data as it comes in.</div>
+        <div class="stack"><span>JavaScript</span></div>
+        <div class="links"><a href="https://github.com/ravindra-das-aiml/realtime-analytics" target="_blank" rel="noopener">Source</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="wrap">
+    <h2 class="section-title">resume.log <span class="path">~/ravindra/history --oneline</span></h2>
+
+    <div class="commit">
+      <div class="hash">a1b2c3d</div>
+      <div>
+        <div class="msg">Pursuing B.Tech in Artificial Intelligence & Machine Learning</div>
+        <div class="meta">CGC University, Chandigarh — 2nd year, in progress</div>
+      </div>
+    </div>
+
+    <div class="commit">
+      <div class="hash">e4f5g6h</div>
+      <div>
+        <div class="msg">Completed Higher Secondary (Science)</div>
+        <div class="meta">Your School Name — 20XX</div>
+      </div>
+    </div>
+
+    <div class="commit">
+      <div class="hash">i7j8k9l</div>
+      <div>
+        <div class="msg">Built spam email classifier & AI chatbot projects</div>
+        <div class="meta">Personal projects — see GitHub</div>
+      </div>
+    </div>
+
+    <div class="commit">
+      <div class="hash">m1n2o3p</div>
+      <div>
+        <div class="msg">Certification / Course completed (add yours here)</div>
+        <div class="meta">Platform name — 20XX</div>
+      </div>
+    </div>
+
+    <div style="margin-top:26px;">
+      <a class="btn ghost" href="#">Download full resume (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2 class="section-title">contact.sh <span class="path">~/ravindra/contact</span></h2>
+
+    <div class="terminal">
+      <span class="prompt">ravindra@portfolio</span> <span class="cmd">~ $</span> ./say-hello.sh<br>
+      <span style="color:var(--text-muted)">Ready to receive your message. Fill the form below or reach out directly.</span>
+    </div>
+
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! This form is a demo — connect it to a form service (e.g. Formspree) or your email to make it live.');">
+      <div>
+        <label for="name">your_name</label>
+        <input id="name" name="name" type="text" placeholder="Enter your name" required>
+      </div>
+      <div>
+        <label for="email">your_email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+      </div>
+      <div>
+        <label for="message">message</label>
+        <textarea id="message" name="message" rows="4" placeholder="Say something..." required></textarea>
+      </div>
+      <button type="submit">Send message →</button>
+    </form>
+
+    <div class="contact-links">
+      <a href="mailto:ravindra.das@example.com">✉ email</a>
+      <a href="https://github.com/ravindra-das-aiml" target="_blank" rel="noopener">🔗 GitHub</a>
+      <a href="https://www.linkedin.com/in/ravindra-das-511b612a3" target="_blank" rel="noopener">💼 LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer class="console">
+  <span>build finished — <span class="ok">0 errors</span>, <span class="ok">1 opportunity found</span></span>
+  <span>© <span id="year"></span> Ravindra Das</span>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const tabs = document.querySelectorAll('.tab');
+  const targets = { hero: 'hero', skills: 'skills', projects: 'projects', resume: 'resume', contact: 'contact' };
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const id = tab.getAttribute('data-target');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const sectionIds = ['hero','about','skills','projects','resume','contact'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id === 'about' ? 'hero' : entry.target.id;
+        tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-target') === id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
