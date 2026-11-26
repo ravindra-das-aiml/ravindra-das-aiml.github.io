@@ -6,14 +6,17 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 BACKEND_ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_CORS_ORIGINS = (
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://ravindra-das-aiml.github.io",
+)
 
 
 class Settings(BaseSettings):
     groq_api_key: SecretStr
     groq_model: str = "openai/gpt-oss-120b"
-    cors_origins: str = (
-        "http://localhost:5173,http://127.0.0.1:5173"
-    )
+    cors_origins: str = ",".join(DEFAULT_CORS_ORIGINS)
     groq_timeout_seconds: float = 25.0
 
     model_config = SettingsConfigDict(
@@ -38,7 +41,12 @@ class Settings(BaseSettings):
 
     @property
     def allowed_origins(self) -> list[str]:
-        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+        configured_origins = [
+            origin.strip()
+            for origin in self.cors_origins.split(",")
+            if origin.strip()
+        ]
+        return list(dict.fromkeys([*DEFAULT_CORS_ORIGINS, *configured_origins]))
 
 
 @lru_cache
