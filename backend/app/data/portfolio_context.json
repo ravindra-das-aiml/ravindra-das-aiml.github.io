@@ -1,0 +1,99 @@
+{
+  "identity": {
+    "name": "Ravindra Das",
+    "focus": "AI/ML and software development",
+    "location": "Mohali, Punjab, India",
+    "profile": "B.Tech student in AI & Machine Learning interested in applying engineering to practical problems and building useful, reliable software."
+  },
+  "skills": {
+    "programming_languages": ["Python", "JavaScript (ES6+)", "C++", "Java"],
+    "ai_and_machine_learning": ["PyTorch", "TensorFlow", "Scikit-Learn", "NLP", "Generative AI", "AI Agents", "Pandas", "NumPy"],
+    "web_development": ["React.js", "Next.js", "Tailwind CSS", "Node.js", "Express.js", "REST APIs"],
+    "databases": ["SQL", "MongoDB", "PostgreSQL"],
+    "cloud_and_devops": ["AWS", "Docker"],
+    "developer_tools": ["Git", "GitHub"]
+  },
+  "projects": [
+    {
+      "name": "Resume ATS Analyzer",
+      "description": "An NLP-powered resume screening tool that evaluates resumes against job descriptions, calculates ATS match scores, and highlights missing keywords.",
+      "technologies": ["Python", "NLP", "Machine Learning", "Streamlit"],
+      "repository": "https://github.com/ravindra-das-aiml/resume-ats-analyzer"
+    },
+    {
+      "name": "Real-Time Analytics Dashboard",
+      "description": "An end-to-end streaming data analytics pipeline and visualization dashboard designed to process live metrics and deliver operational insights.",
+      "technologies": ["Python", "Data Analytics", "SQL", "Dashboard"],
+      "repository": "https://github.com/ravindra-das-aiml/realtime-analytics",
+      "live_demo": "https://realtime-analytics-dashboard-jet.vercel.app"
+    },
+    {
+      "name": "Customer Service AI Chatbot",
+      "description": "A conversational AI assistant designed to understand customer queries, resolve FAQs, and route complex support tickets.",
+      "technologies": ["Python", "NLP", "Generative AI", "API"],
+      "repository": "https://github.com/ravindra-das-aiml/customer-service-chatbot"
+    },
+    {
+      "name": "GraphOne Intel Pipeline",
+      "description": "A structured data processing and intelligence pipeline for extracting, transforming, and analyzing connected entity relationships.",
+      "technologies": ["Python", "Data Engineering", "Graph Logic", "ETL"],
+      "repository": "https://github.com/ravindra-das-aiml/graphone-intel-pipeline"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Saiket Systems",
+      "role": "Technical & ML Internship",
+      "type": "Internship"
+    },
+    {
+      "company": "Codveda",
+      "role": "Technical & ML Internship",
+      "type": "Internship"
+    },
+    {
+      "company": "Maincrafts",
+      "role": "Technical & ML Internship",
+      "type": "Internship"
+    }
+  ],
+  "education": [
+    {
+      "qualification": "Bachelor of Technology (AI & ML)",
+      "institution": "Chandigarh Engineering College, Jhanjeri",
+      "period": "2024–2028",
+      "status": "In progress",
+      "score": "CGPA 7.50"
+    },
+    {
+      "qualification": "Diploma in Mechanical Engineering",
+      "institution": "KK University Nalanda, Biharsharif",
+      "period": "2025",
+      "status": "Completed",
+      "score": "CGPA 8.00"
+    },
+    {
+      "qualification": "Secondary School Education",
+      "institution": "Public High School Badhonia, Bihar",
+      "period": "2019",
+      "status": "Completed",
+      "score": "79.8%"
+    }
+  ],
+  "certifications_and_achievements": [
+    "Python Programming / Advanced Python Certification; issuer and date are not listed.",
+    "Web Development Certification; issuer and date are not listed.",
+    "Machine Learning / Data Science Certification; issuer and date are not listed.",
+    "AI/ML Internship Certificate from Maincrafts Technology; issue date is not listed.",
+    "AI/ML Internship Certificate from Code Technologies; issue date is not listed.",
+    "The supplied resume states University Rank #378 and Batch Rank #1; no verification link is provided.",
+    "The supplied resume mentions hackathon participation and LeetCode problem-solving without event details, counts, or ranking.",
+    "The portfolio describes hands-on Machine Learning, Deep Learning, and Agentic AI training at CGC Mohali; no date or certificate file is included."
+  ],
+  "links": {
+    "github": "https://github.com/ravindra-das-aiml",
+    "linkedin": "https://linkedin.com/in/ravindra-das-511b612a3",
+    "email": "ravindra21075@gmail.com",
+    "resume": "/resume.pdf.pdf"
+  }
+}
